@@ -24,6 +24,7 @@ Problems are grouped by theme and generally go from easier to harder.
 - TryCatchSimple.sol
 - TryCatchReason.sol
 - ReadStruct.sol
+- BadBank.sol
 - LowLevel.sol
 - LowLevelArgs1.sol
 - LowLevelArgs2.sol
