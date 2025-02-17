@@ -21,6 +21,8 @@ Problems are grouped by theme and generally go from easier to harder.
 - StringIndex.sol
 - IsFirstBitSet.sol
 - IsNBitSet.sol
+- Multiplication.sol
+- MultiplyConstant.sol
 - TryCatchSimple.sol
 - TryCatchReason.sol
 - ReadStruct.sol
