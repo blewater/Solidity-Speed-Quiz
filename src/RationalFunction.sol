@@ -12,6 +12,5 @@ contract RationalFunction {
         // f(4) = 133
         // f(5) = 125
 
-        return x * 100 / (x - 1);
     }
 }
