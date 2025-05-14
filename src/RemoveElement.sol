@@ -14,5 +14,13 @@ contract RemoveElement {
         // the new array should have a length of arr.length - 1
         // use swap-and-pop to remove the item
 
+        arr[index] = arr[arr.length-1];
+        arr.pop();
+
+        // why not?
+                // for (uint i = index; i + 1 < arr.length-1; i++) {
+                //     arr[i] = arr[i+1];
+                // }
+                // arr.pop();
     }
 }
