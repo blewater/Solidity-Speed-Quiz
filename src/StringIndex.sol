@@ -5,5 +5,8 @@ contract StringIndex {
     function main(string memory str, uint256 index) public returns (string memory) {
         // return the character at index in str
         // assume str only consists of ascii characters
-    } 
+        bytes memory b1 = new bytes(1);
+        b1[0] = bytes(str)[index];
+        return string(b1);
+    }
 }
