@@ -11,6 +11,8 @@ contract RationalFunction {
         // f(3) = 150
         // f(4) = 133
         // f(5) = 125
+        require(x > 1, "div by 0");
+        return 100*x/(x-1);
 
     }
 }
