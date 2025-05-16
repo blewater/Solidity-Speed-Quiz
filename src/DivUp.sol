@@ -8,5 +8,11 @@ contract DivUp {
         // if y divides x exactly, return x / y
         // if there is a fractional part in the quotient, add 1 to the answer
         // if y == 0 revert
+        require(y!=0, "div by zero");
+        uint res = x / y;
+        if (res * y == x) {
+            return res;
+        }
+        return res + 1;
     }
 }
