@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity 0.8.28;
 
+import "@openzeppelin/contracts/utils/Create2.sol";
+
 contract Account2 {
     address immutable owner;
 
@@ -17,8 +19,13 @@ contract Account2 {
 
 contract AccountMaker {
     function makeAccount(address owner) external payable returns (address) {
-        // use create2 to create an account with the owner address
-        // the salt should be the owner address
-        // the value sent to them should be msg.value
+        // derive salt and init code
+        bytes32 salt = bytes32(bytes20(owner));
+        bytes memory bytecode = abi.encodePacked(type(Account2).creationCode, abi.encode(owner));
+
+        // compute the account address
+        // address acct = Create2.computeAddress(salt, keccak256(bytecode), address(this));
+
+        return Create2.deploy(msg.value, salt, bytecode);
     }
 }
